@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       flash[:success] = "Добро пожаловать, #{@user.login}!"
       redirect_to form_path
     else
-      redirect_to new_user_path, notice: 'Пароли не совпадают' 
+      redirect_to new_user_path, notice: 'Пароли не совпадают или данные логин или пароль существуют' 
     end
   end
 
