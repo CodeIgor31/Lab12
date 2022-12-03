@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'spec_helper'
-require_relative 'rails_helper'
+require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe UsersController do
     include RSpec::Expectations
@@ -31,7 +31,7 @@ RSpec.describe UsersController do
       @driver.find_element(:id, 'btn').click
       @driver.find_element(:id, 'num').send_keys '100'
       @driver.find_element(:id, 'find').click
-      verify { expect((@driver.find_element(:xpath, '//*[@id="counter"]').text)).to eq('6') }
+      verify { expect((@driver.find_element(:id, 'counter').text)).to eq('6') }
     end
 
     def verify

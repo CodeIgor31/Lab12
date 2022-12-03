@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users
   root 'sessions#new', as: 'home'
   get 'palindroms/index', as: 'form'
-  get 'palindroms/result', as: 'res'
+  post 'palindroms/result', to: 'palindroms#result'
   get 'sessions/destroy'
   get 'sessions/new'
   get 'sessions/create'

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'spec_helper'
-require_relative 'rails_helper'
+require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe UsersController do
     include RSpec::Expectations
@@ -19,17 +19,11 @@ RSpec.describe UsersController do
 
     it 'should login and get an answer' do
       @driver.get(@base_url)
-      @driver.find_element(:id, 'log_mail').send_keys 'petrA@mail.ru'
+      @driver.find_element(:id, 'log_mail').send_keys 'igor.yagmurov@mail.ru'
       @driver.find_element(:id, 'log_pass').send_keys @password
       @driver.find_element(:id, 'log_btn').click
       @driver.find_element(:id, 'num').send_keys '100'
       @driver.find_element(:id, 'find').click
-      verify { expect((@driver.find_element(:xpath, '//*[@id="counter"]').text)).to eq('6') }
-    end
-
-    def verify
-      yield
-    rescue ExpectationNotMetError => e
-      @verification_errors << e
+      expect((@driver.find_element(:id, 'counter').text)).to eq('6')
     end
   end

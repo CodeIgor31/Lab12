@@ -7,4 +7,12 @@
 .purple{
     color:purple;
 }
+tr, th, td {
+    border: 1px solid black;
+    }
+.tab{
+    height:40%;
+    width:100%;
+    border: 1px solid black;
+    }
 

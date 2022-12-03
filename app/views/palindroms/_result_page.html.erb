@@ -1,0 +1,16 @@
+<h3>Таблица с результатами</h3>
+Введенное диапазон: [0, <%= @number %>]
+<table class = "tab">
+    <tr>
+    <th>Число</th>
+    <th>Квадрат числа</th>
+    </tr>
+    <% @hash.each do |res, sqr|%>
+    <tr>
+        <td><%= res %></td>
+        <td><%= sqr %></td>
+    </tr>
+    <% end%>
+</table>
+Количество таких чисел
+<p id="counter"><%= @hash.size %></p>
