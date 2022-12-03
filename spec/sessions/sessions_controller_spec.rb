@@ -12,7 +12,7 @@ RSpec.describe UsersController do
       @driver.manage.timeouts.implicit_wait = 30
       @verification_errors = []
     end
-  
+   
     after(:each) do
       @driver.quit
     end
