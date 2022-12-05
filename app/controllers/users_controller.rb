@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
+# User controller
 class UsersController < ApplicationController
   before_action :no_autorize, only: %i[new create]
   before_action :autorize, only: %i[edit update]
   before_action :set_user, only: %i[edit update destroy]
 
-  def index
-  end
+  def index; end
 
   def show
     @users = User.all
@@ -14,8 +16,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @user = User.new(user_params)
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
       flash[:success] = "Добро пожаловать, #{@user.login}!"
       redirect_to form_path
     else
-      redirect_to new_user_path, notice: 'Пароли не совпадают или данные логин или пароль существуют' 
+      redirect_to new_user_path, notice: 'Пароли не совпадают или данные логин или пароль существуют'
     end
   end
 
@@ -38,11 +39,12 @@ class UsersController < ApplicationController
   end
 
   private
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    def user_params
-      params.require(:user).permit(:email, :login, :password, :password_confirmation)
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :login, :password, :password_confirmation)
+  end
 end
