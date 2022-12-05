@@ -8,8 +8,16 @@ class PalindromsController < ApplicationController
   def index; end
 
   def result
-    @number = params[:num].to_i
-    @hash = result_hash(@number)
-    redirect_to form_path, notice: 'Вводите числа >= 0' if @hash.size.zero?
+    @number = form_params
+    @palindrom = Palindrom.new(@number)
+    if @palindrom.valid?
+      @hash = @palindrom.print_res
+    end
+  end
+
+  private
+
+  def form_params
+    params.permit(:num)
   end
 end
